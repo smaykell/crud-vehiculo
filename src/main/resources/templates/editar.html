@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Vehiculos</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<div class="card m-2">
+			<div class="card-body">
+				<h4 class="card-title">Formulario</h4>
+				<form th:action="@{/actualizar/{id}(id=${vehiculo.id})}" th:object="${vehiculo}" method="post">
+					<div class="row">
+						<div class="col-3">
+							<label for="placa" class="form-label">Placa</label>
+							<input type="text" th:field="*{placa}" class="form-control"
+								th:classappend="${not #lists.isEmpty(#fields.errors('placa'))} ? is-invalid" id="placa">
+							<div id="validationPlaca" class="invalid-feedback">
+								<span th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"
+                                    class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+							<label for="color" class="form-label">Color</label>
+							<input type="text" th:field="*{color}" class="form-control"
+								th:classappend="${not #lists.isEmpty(#fields.errors('color'))} ? is-invalid"
+								id="color">
+							<div id="validationColor" class="invalid-feedback">
+								<span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"
+                                    class="text-danger"></span>
+                            </div>
+                        </div>
+                         <div class="col-3">
+                            <label for="ruedas" class="form-label">Ruedas</label>
+                            <input type="number" th:field="*{ruedas}" class="form-control"
+                                th:classappend="${not #lists.isEmpty(#fields.errors('ruedas'))} ? is-invalid"
+                                id="ruedas">
+                            <div id="validationRuedas" class="invalid-feedback">
+                                <span th:if="${#fields.hasErrors('ruedas')}" th:errors="*{ruedas}"
+                                    class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="fabricacion" class="form-label">Fecha fabricación</label>
+                            <input type="date" th:field="*{fabricacion}" class="form-control"
+                                th:classappend="${not #lists.isEmpty(#fields.errors('fabricacion'))} ? is-invalid"
+                                id="fabricacion">
+                            <div id="validationFabricacion" class="invalid-feedback">
+                                <span th:if="${#fields.hasErrors('fabricacion')}" th:errors="*{fabricacion}"
+                                    class="text-danger"></span>
+                            </div>
+                        </div>
+                          <div class="col-3">
+                            <label for="cilindrada" class="form-label">Cilindrada</label>
+                            <input type="number" th:field="*{cilindrada}" class="form-control"
+                                th:classappend="${not #lists.isEmpty(#fields.errors('cilindrada'))} ? is-invalid"
+                                id="cilindrada">
+                            <div id="validationCilindrada" class="invalid-feedback">
+                                <span th:if="${#fields.hasErrors('cilindrada')}" th:errors="*{cilindrada}"
+                                    class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+	                         <div class="form-check">
+	  							<input class="form-check-input" type="checkbox" th:field="*{automatico}" id="flexCheckChecked" checked>
+	  							<label class="form-check-label" for="flexCheckChecked">Automatico</label>
+							</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
